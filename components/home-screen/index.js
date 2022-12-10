@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { useState, useEffect } from "react";
-import { ScrollView, Text } from "react-native";
+import { ScrollView, Text, ActivityIndicator, View } from "react-native";
 
 import styled from "styled-components/native";
 import Layout from "./layout";
@@ -48,6 +48,17 @@ export default function HomeScreen({ navigation }) {
             setIsPending(false);
         }
     };
+
+    if(isPending) return (
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+            <ActivityIndicator
+                size={"large"}
+            />
+            <Text style={{marginTop: 5}}>
+                Загрузка...
+            </Text>
+        </View>
+    )
 
     return (
         <Home>
